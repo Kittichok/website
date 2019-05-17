@@ -31,3 +31,21 @@
     transform: rotate(360deg);
   }
 }
+
+.Card-list {
+  padding-left: 20%;
+  padding-right: 20%;
+  background: #282c34;
+}
+
+.Card-item{
+  margin-bottom: 15px;
+}
+
+.Center-text {
+  width: 100px;
+  height: 50px;
+  padding-left: 30%;
+  padding-bottom: 30%;
+  color: aliceblue;
+}

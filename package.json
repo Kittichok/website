@@ -2,12 +2,17 @@
   "name": "website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Kittichok.github.io/website/" ,
+  "homepage": "https://Kittichok.github.io/website/",
   "dependencies": {
+    "bootstrap": "^4.3.1",
+    "d3": "^5.9.2",
     "gh-pages": "^2.0.1",
+    "papaparse": "^4.6.3",
     "react": "^16.8.6",
+    "react-csv-reader": "^1.2.2",
     "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-scripts": "3.0.1",
+    "reactstrap": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
