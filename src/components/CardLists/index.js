@@ -1,65 +1,71 @@
 import React from 'react';
-// import './App.css';
-import { Card, Button, CardTitle, CardText } from 'reactstrap';
+import './index.css';
+import { Card, Button, CardTitle, CardText, CardFooter,
+    CardBody } from 'reactstrap';
 
-import Papa from 'papaparse';
-import CSVReader from 'react-csv-reader';
 import * as d3 from 'd3';
 import data from './data.csv';
 
-
-const CardList = (props) => {
-    let lists = [];
-    d3.csv(data, function(data) { 
-        if(data){
-            lists.push(data);
-        }
-    });
-    // const buildCard = function (dataCard) {
-    //     <Card body inverse color="primary" className="Card-item">
-    //         <CardTitle>{dataCard.topic}</CardTitle>
-    //         <CardText>{dataCard.remark}</CardText>
-    //         <Button color="dark">Button</Button>
-    //     </Card>
-    // };
-    // var buildCards = function(dataCards){
-    //   var tmpDatas = dataCards;
-    //   console.log(tmpDatas);
-    //   console.log(typeof(lists));
-    //   tmpDatas.map((data) => {
-    //     console.log(data)
-    //     return buildCard(data)
-    //   })
-    // };
-    
-    // lists.map((data) => {
-    //   console.log(data)
-    // })  
-    
-    console.log(lists)
-    // lists.forEach(element => {
-    //     console.log(element)
-    // }) 
-    // console.log(lists.length)
-    return (
-        <div className="Card-list">
-            <h1 className="Center-text">Journey</h1>
-            
-            {/* {lists} */}
-
-            <Card body inverse color="primary" className="Card-item">
-                <CardTitle>Special Title Treatment</CardTitle>
-                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                <Button color="dark">Button</Button>
-            </Card>
-            
-            <Card body inverse color="success">
-                <CardTitle>Special Title Treatment</CardTitle>
-                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                <Button color="dark">Button</Button>
-            </Card>
-        </div>
-    );
+function renderCards (dataCards){
+    console.log(dataCards);
+    var colors = ['info', 'primary']
+    return dataCards.map((props, i) => {
+        
+        return (
+            <Card body inverse color={colors[i%2]} className="Card-item">
+                <CardBody>
+                    <CardTitle>{props.topic}</CardTitle>
+                    <CardText>{props.remark}</CardText>
+                    <Button color='dark' 
+                    to={props.reference}>Link</Button>
+                </CardBody>
+                <CardFooter>{props.date}</CardFooter>
+            </Card> )
+    })
 };
 
-export {CardList};
+var loadData = new Promise((resolve, reject) => {
+    var lists = [];
+    d3.csv(data, function(data) { 
+        if(data){
+            lists.push({
+                date: data.date,
+                reference: data.reference,
+                remark: data.remark,
+                topic: data.topic,
+                type: data.type
+            });
+        }
+    }).then(() => {
+        resolve(lists)
+    });
+})
+
+function goLink(link){
+    console.log('cilck!!')
+    window.open(link, '_blank');
+}
+
+class CardList extends React.Component {
+    constructor(){
+        super()
+        this.state = { data: [],}
+    }
+
+    componentWillMount() {
+        loadData.then(data => {
+            this.setState({data: data})
+        })
+    }
+
+    render() {
+        return (
+            <div className='Card-list'>
+                <h1 className='Center-text'>Journey</h1>
+                {renderCards(this.state.data)}
+            </div>
+        )
+    }
+}
+
+export default CardList;
