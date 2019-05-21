@@ -1,23 +1,24 @@
 import React from 'react';
 import './index.css';
 import { Card, Button, CardTitle, CardText, CardFooter,
-    CardBody } from 'reactstrap';
+    CardBody, CardHeader, CardDeck } from 'reactstrap';
+import {Container, Row, Col} from 'react-bootstrap'
 
 import * as d3 from 'd3';
 import data from './data.csv';
 
-function renderCards (dataCards){
-    console.log(dataCards);
+const renderCards = (dataCards) => {
+    // console.log(dataCards);
     var colors = ['info', 'primary']
     return dataCards.map((props, i) => {
-        
         return (
-            <Card body inverse color={colors[i%2]} className="Card-item">
+            <Card body inverse color={colors[i%2]} className="Card-item text-center">
+                <CardHeader>{props.topic}</CardHeader>
                 <CardBody>
-                    <CardTitle>{props.topic}</CardTitle>
                     <CardText>{props.remark}</CardText>
-                    <Button color='dark' 
-                    to={props.reference}>Link</Button>
+                    <a href={props.reference} target="_blank">
+                        <Button color='dark' >Link</Button>
+                    </a>
                 </CardBody>
                 <CardFooter>{props.date}</CardFooter>
             </Card> )
@@ -41,10 +42,6 @@ var loadData = new Promise((resolve, reject) => {
     });
 })
 
-function goLink(link){
-    console.log('cilck!!')
-    window.open(link, '_blank');
-}
 
 class CardList extends React.Component {
     constructor(){
@@ -61,8 +58,16 @@ class CardList extends React.Component {
     render() {
         return (
             <div className='Card-list'>
-                <h1 className='Center-text'>Journey</h1>
-                {renderCards(this.state.data)}
+            <Container>
+                <Row>
+                    <h1 className='Center-text'>Journey of me</h1>
+                </Row>
+                <Row>
+                    <CardDeck>
+                            {renderCards(this.state.data)}
+                    </CardDeck>
+                </Row>
+            </Container>
             </div>
         )
     }

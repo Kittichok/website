@@ -2,10 +2,14 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import CardList from './components/CardLists';
+import Responsive from 'react-responsive';
 
+
+const Default = props => <Responsive {...props} minWidth={768} />;
 
 function App() {
   return (
+    <Default>
     <div className="App">
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -25,6 +29,7 @@ function App() {
         <CardList/>
       </body>
     </div>
+    </Default>
   );
 }
 
