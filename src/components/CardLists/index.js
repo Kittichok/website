@@ -1,11 +1,13 @@
 import React from 'react';
 import './index.css';
-import { Card, Button, CardTitle, CardText, CardFooter,
+import { Card, Button, CardText, CardFooter,
     CardBody, CardHeader, CardDeck } from 'reactstrap';
-import {Container, Row, Col} from 'react-bootstrap'
+import {Container, Row} from 'react-bootstrap'
 
 import * as d3 from 'd3';
 import data from './data.csv';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-141787668-1');
 
 const renderCards = (dataCards) => {
     // console.log(dataCards);
@@ -17,7 +19,10 @@ const renderCards = (dataCards) => {
                 <CardBody>
                     <CardText>{props.remark}</CardText>
                     <a href={props.reference} target="_blank">
-                        <Button color='dark' >Link</Button>
+                        <Button color='dark' onClick={ReactGA.event({
+                        category: 'User',
+                        action: 'Click'
+                        })}>Link</Button>
                     </a>
                 </CardBody>
                 <CardFooter>{props.date}</CardFooter>
