@@ -7,6 +7,7 @@ import {Container, Row} from 'react-bootstrap'
 import * as d3 from 'd3';
 import data from './data.csv';
 import ReactGA from 'react-ga';
+import Tabletop from 'tabletop';
 ReactGA.initialize('UA-141787668-1');
 
 const renderCards = (dataCards) => {
@@ -47,6 +48,7 @@ var loadData = new Promise((resolve, reject) => {
     });
 })
 
+var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1CJv1ZBVRoPpOraGaTg_N3L-PSf2mvQmUJVVS2KkSo3M/pubhtml'
 
 class CardList extends React.Component {
     constructor(){
@@ -54,10 +56,17 @@ class CardList extends React.Component {
         this.state = { data: [],}
     }
 
-    componentWillMount() {
-        loadData.then(data => {
-            this.setState({data: data})
+    componentDidMount(){
+        Tabletop.init({
+            key: '1CJv1ZBVRoPpOraGaTg_N3L-PSf2mvQmUJVVS2KkSo3M',
+            callback: googleData => {
+                this.setState({data: googleData})
+            },
+            simpleSheet: true
         })
+    }
+
+    componentWillMount() {
     }
 
     render() {
@@ -68,9 +77,9 @@ class CardList extends React.Component {
                     <h1 className='Center-text'>Journey of me</h1>
                 </Row>
                 <Row>
-                    <CardDeck>
-                            {renderCards(this.state.data)}
-                    </CardDeck>
+                    {/* <CardDeck> */}
+                        {renderCards(this.state.data)}
+                    {/* </CardDeck> */}
                 </Row>
             </Container>
             </div>
