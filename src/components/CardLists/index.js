@@ -2,7 +2,8 @@ import React from 'react';
 import './index.css';
 import { Card, Button, CardText, CardFooter,
     CardBody, CardHeader, CardDeck } from 'reactstrap';
-import {Container, Row} from 'react-bootstrap'
+import {Container, Row} from 'react-bootstrap';
+import Spinner from 'react-spinner-material';
 
 import * as d3 from 'd3';
 import data from './data.csv';
@@ -53,20 +54,24 @@ var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1CJv1ZBVRoPpO
 class CardList extends React.Component {
     constructor(){
         super()
-        this.state = { data: [],}
+        this.state = { data: [], loading: true}
     }
 
     componentDidMount(){
         Tabletop.init({
             key: '1CJv1ZBVRoPpOraGaTg_N3L-PSf2mvQmUJVVS2KkSo3M',
             callback: googleData => {
-                this.setState({data: googleData})
+                googleData.sort(function(a,b){
+                    return new Date(b.date) - new Date(a.date);
+                });
+                this.setState({data: googleData, loading: false})
             },
             simpleSheet: true
         })
     }
 
     componentWillMount() {
+
     }
 
     render() {
@@ -77,6 +82,9 @@ class CardList extends React.Component {
                     <h1 className='Center-text'>Journey of me</h1>
                 </Row>
                 <Row>
+                    <div className='Center-text'>
+                        <Spinner size={250} spinnerColor={"#1ba8a4"} spinnerWidth={10} visible={this.state.loading} />
+                    </div>
                     {/* <CardDeck> */}
                         {renderCards(this.state.data)}
                     {/* </CardDeck> */}
