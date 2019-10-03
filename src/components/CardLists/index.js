@@ -49,8 +49,6 @@ var loadData = new Promise((resolve, reject) => {
     });
 })
 
-var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1CJv1ZBVRoPpOraGaTg_N3L-PSf2mvQmUJVVS2KkSo3M/pubhtml'
-
 class CardList extends React.Component {
     constructor(){
         super()
@@ -58,8 +56,11 @@ class CardList extends React.Component {
     }
 
     componentDidMount(){
+        if(process.env.NODE_ENV === "development"){
+            console.log(process.env.REACT_APP_G_KEY);
+        }
         Tabletop.init({
-            key: '1CJv1ZBVRoPpOraGaTg_N3L-PSf2mvQmUJVVS2KkSo3M',
+            key: process.env.REACT_APP_G_KEY,
             callback: googleData => {
                 googleData.sort(function(a,b){
                     return new Date(b.date) - new Date(a.date);
