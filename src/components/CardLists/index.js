@@ -1,12 +1,10 @@
 import React from 'react';
 import './index.css';
 import { Card, Button, CardText, CardFooter,
-    CardBody, CardHeader, CardDeck } from 'reactstrap';
+    CardBody, CardHeader } from 'reactstrap';
 import {Container, Row} from 'react-bootstrap';
 import Spinner from 'react-spinner-material';
 
-import * as d3 from 'd3';
-import data from './data.csv';
 import ReactGA from 'react-ga';
 import Tabletop from 'tabletop';
 ReactGA.initialize('UA-141787668-1');
@@ -20,7 +18,7 @@ const renderCards = (dataCards) => {
                 <CardHeader>{props.topic}</CardHeader>
                 <CardBody>
                     <CardText>{props.remark}</CardText>
-                    <a href={props.reference} target="_blank">
+                    <a href={props.reference} >
                         <Button color='dark' onClick={ReactGA.event({
                         category: 'User',
                         action: 'Click'
@@ -31,23 +29,6 @@ const renderCards = (dataCards) => {
             </Card> )
     })
 };
-
-var loadData = new Promise((resolve, reject) => {
-    var lists = [];
-    d3.csv(data, function(data) { 
-        if(data){
-            lists.push({
-                date: data.date,
-                reference: data.reference,
-                remark: data.remark,
-                topic: data.topic,
-                type: data.type
-            });
-        }
-    }).then(() => {
-        resolve(lists)
-    });
-})
 
 class CardList extends React.Component {
     constructor(){
