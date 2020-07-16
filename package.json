@@ -4,23 +4,30 @@
   "private": true,
   "homepage": "https://Kittichok.github.io/website/",
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
     "bootstrap": "^4.3.1",
     "d3": "^5.9.2",
     "dotenv": "^8.1.0",
     "gh-pages": "^2.0.1",
     "papaparse": "^4.6.3",
-    "react": "^16.8.6",
+    "react": "^16.13.1",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-csv-reader": "^1.2.2",
-    "react-dom": "^16.8.6",
+    "react-dom": "^16.13.1",
     "react-ga": "^2.5.7",
-    "react-native": "^0.59.9",
     "react-responsive": "^6.1.2",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "3.0.1",
+    "react-scripts": "3.4.1",
     "react-spinner-material": "^1.1.2",
     "reactstrap": "^8.0.0",
-    "tabletop": "^1.5.2"
+    "tabletop": "^1.5.2",
+    "typescript": "~3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -44,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/reactstrap": "^8.5.0"
   }
 }

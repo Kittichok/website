@@ -6,12 +6,10 @@ ReactGA.initialize('UA-141787668-1');
 
 function App() {
   return (
-      <div className="App">
-        {ReactGA.pageview(window.location.pathname + window.location.search)}
-        <body>
-          <CardList/>
-        </body>
-      </div>
+    <div className="App">
+      {ReactGA.pageview(window.location.pathname + window.location.search)}
+      <CardList />
+    </div>
   );
 }
 
