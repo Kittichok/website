@@ -147,9 +147,10 @@ const CardList = () => {
           <div className="Center-text">
             <Spinner
               size={250}
-              spinnerColor={'#1ba8a4'}
-              spinnerWidth={10}
               visible={state.loading}
+              radius={100}
+              color={'#1ba8a4'}
+              stroke={10}
             />
           </div>
           {/* <CardDeck> */}

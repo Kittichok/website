@@ -33,3 +33,20 @@
     transform: rotate(360deg);
   }
 }
+
+.full-screen {
+  height: 100vh;
+  padding-top: 5vh;
+}
+
+.topic {
+  font-size: 100px;
+  color: wheat;
+}
+
+.container-center {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center
+}

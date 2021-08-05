@@ -1,0 +1,20 @@
+.profile {    
+  display: flex;
+  justify-content: center;
+  height: 450px;
+  padding-top: 7rem;
+
+}
+
+.card {
+  margin: 5 rem;
+}
+
+.avatar {
+  width: 134px;
+  height: 130px;
+
+  background: #FFFFFF;
+  mix-blend-mode: normal;
+  opacity: 0.1;
+}

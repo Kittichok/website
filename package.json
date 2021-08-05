@@ -11,12 +11,11 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.6.0",
     "d3": "^5.9.2",
     "dotenv": "^8.1.0",
     "gh-pages": "^2.0.1",
-    "papaparse": "^5.2.0",
-    "react": "^16.13.1",
+    "react": "^17.0.2",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-csv-reader": "^1.2.2",
     "react-dom": "^16.13.1",
@@ -27,7 +26,7 @@
     "react-spinner-material": "^1.1.2",
     "reactstrap": "^8.0.0",
     "tabletop": "^1.5.2",
-    "typescript": "~3.7.2"
+    "typescript": "^4.3.5"
   },
   "scripts": {
     "start": "react-scripts start",
