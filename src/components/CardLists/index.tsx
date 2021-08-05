@@ -66,10 +66,19 @@ const CardList = () => {
     data: [],
     loading: true,
   });
+
+  const sortDate = (arr: IMyGooglesheet[]) => {
+    return arr.sort(function(a, b) {
+      var c = new Date(a.date);
+      var d = new Date(b.date);
+      return d.valueOf() - c.valueOf();
+  });
+  }
+
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
       setState({
-        data: [
+        data: sortDate([
           {
             topic: 'TDD',
             remark: '',
@@ -121,7 +130,7 @@ const CardList = () => {
             date: '2019-10-03',
             type: 'CI/CD',
           },
-        ],
+        ]),
         loading: false,
       });
     }
@@ -131,7 +140,7 @@ const CardList = () => {
         // googleData.sort(function (a: any, b: any) {
         //   return new Date(b.date) - new Date(a.date);
         // });
-        setState({ data: googleData, loading: false });
+        setState({ data: sortDate(googleData), loading: false });
       },
       simpleSheet: true,
     });
