@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const TypingText = ({ text }) => {
+const TypingText = ({ text }: any) => {
   const [typedText, setTypedText] = useState('');
   let index = 0;
 
