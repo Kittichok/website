@@ -18,36 +18,40 @@ ReactGA.initialize('UA-141787668-1');
 
 const renderCards = (dataCards: IMyGooglesheet[]) => {
   var colors = ['info', 'primary'];
-  return dataCards.map((props: any, i) => {
-    return (
-      <Card
-        key={i}
-        body
-        inverse
-        color={colors[i % 2]}
-        className="Card-item text-center"
-      >
-        <CardHeader>{props.topic}</CardHeader>
-        <CardBody>
-          <CardText>{props.remark}</CardText>
-          <a href={props.reference}>
-            <Button
-              color="dark"
-              onClick={() => {
-                ReactGA.event({
-                  category: 'User',
-                  action: 'Click',
-                });
-              }}
-            >
-              Link
-            </Button>
-          </a>
-        </CardBody>
-        <CardFooter>{props.date}</CardFooter>
-      </Card>
-    );
-  });
+  return dataCards.map((props: any, i) => (
+    // @ts-ignore
+    <Card
+      key={i}
+      body
+      inverse
+      color={colors[i % 2]}
+      className="Card-item text-center"
+    >
+      {/* @ts-ignore */}
+      <CardHeader>{props.topic}</CardHeader>
+      {/* @ts-ignore */}
+      <CardBody>
+      {/* @ts-ignore */}
+        <CardText>{props.remark}</CardText>
+        <a href={props.reference}>
+      {/* @ts-ignore */}
+          <Button
+            color="dark"
+            onClick={() => {
+              ReactGA.event({
+                category: 'User',
+                action: 'Click',
+              });
+            } }
+          >
+            Link
+          </Button>
+        </a>
+      </CardBody>
+      {/* @ts-ignore */}
+      <CardFooter>{props.date}</CardFooter>
+    </Card>
+  ));
 };
 interface IMyGooglesheet {
   topic: string;

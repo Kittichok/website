@@ -1,0 +1,14 @@
+{
+  "project": [
+    {
+      "text": "Event driven",
+      "link": "https://github.com/Kittichok/my-playground/tree/main/Event-driven",
+      "imgSrc": "https://raw.githubusercontent.com/Kittichok/my-playground/main/Event-driven/img/arch.png"
+    },
+    {
+      "text": "Microservice",
+      "link": "https://github.com/Kittichok/my-playground/tree/main/To-do-list-microservices",
+      "imgSrc": "https://raw.githubusercontent.com/Kittichok/my-playground/main/To-do-list-microservices/todo_microservice.png"
+    }
+  ]
+}

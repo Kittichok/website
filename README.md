@@ -3,7 +3,7 @@
 
 ## TODO
 - [ ] Profile
-- [ ] Playground Project
+- [x] Playground Project
 
 
 ## Deplot github pages
